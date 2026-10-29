@@ -1,13 +1,8 @@
 from app.repository import product_repository
+from sqlalchemy.orm import Session
 
-def get_all_products():
-    return product_repository.get_all_products()   
+def get_all_products(db: Session):
+    return product_repository.get_all_products(db)   
 
-def get_product_by_id(product_id:int):
-
-    products = product_repository.get_all_products()
-
-    for product in products:
-            if product_id == product["product_id"]:
-                return product
-    return None
+def get_product_by_id(db:Session, product_id:int):
+    return product_repository.get_product_by_id(db, product_id)
