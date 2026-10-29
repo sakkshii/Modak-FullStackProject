@@ -1,3 +1,7 @@
+from sqlalchemy import select
+from sqlalchemy.orm import Session
+from app.models.product import Product
+
 products = [
         {
         "product_id": 1,
@@ -21,5 +25,8 @@ products = [
         }
     ]
 
-def get_all_products():
-    return products   
+def get_all_products(db:Session):
+    statement = select(Product).order_by(Product.product_id)
+    return db.scalars(statement).all()
+def get_product_by_id(db:Session, product_id : int):
+    return db.get(Product, product_id)
