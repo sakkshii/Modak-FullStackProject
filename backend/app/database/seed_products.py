@@ -12,6 +12,6 @@ try:
     )
     db.add(chocolate)
     db.commit()
-    print("Cjocolate Modek added successfully")
+    print("Chocolate Modek added successfully")
 finally:
     db.close()
